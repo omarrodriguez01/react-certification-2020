@@ -1,0 +1,24 @@
+.video{
+    padding: 25px 60px;
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+}
+.toggle-favorites{
+    position: absolute;
+    left: -100vw;
+}
+
+.toggle-heart{
+    color: #aab8c2;
+}
+
+ .fav-icon{
+      padding: 1px 750px;
+     /* position: absolute; */
+     /* top: 550px; */
+     align-items: flex-end;
+ }
+ .fav-text{
+     max-width: 10px;
+ }

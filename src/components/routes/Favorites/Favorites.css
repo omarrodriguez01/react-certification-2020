@@ -1,0 +1,55 @@
+.fav-container {
+    display: flex; /* or inline-flex */
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow: auto;
+    max-width: 100%;
+    padding: 20px 100px;
+    list-style-type: none;
+  }
+
+  .fav-video-card {
+    flex: 1 0 21%; 
+      display: flex;
+      padding: 2px 16px;
+      flex-direction: column;
+      align-items: flex-start;
+  }
+
+  .fav-item {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    padding: 2px 16px;
+    max-width: 300px;
+  }
+
+  .item:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2)
+  }
+
+.fav-card-inside{
+        display: flex;
+        text-decoration: none;
+        flex-direction: column;
+    }
+  .fav-center{
+    display: block;
+    width:  200px;
+    height: 150px;
+    align-self: flex-start;
+  }
+
+  .fav-video-title{
+      padding: 10px;
+      text-decoration: none !important;
+      text-overflow: ellipsis;
+      max-width: 200px;
+      color: orange;
+  }
+  a:link{
+    text-decoration:none !important;
+  }
+
+  .favorites{
+    padding: 40px;
+  }

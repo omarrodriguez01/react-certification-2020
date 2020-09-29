@@ -1,0 +1,45 @@
+.related-container {
+    /* or inline-flex */
+    position: absolute;
+    top: 150px;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    max-height: 80%;
+  }
+  .related-title{
+     position: absolute;
+    top: 80px;
+    right: 0;
+    display: flex;
+    align-items: flex-end; 
+  }
+  /* 
+  } */
+.related-image{
+  display: block;
+  width:  200px;
+  height: 150px;
+}
+
+.related-video-card{
+    padding: 25px 16px;
+}
+
+.related-video-title{
+    padding: 10px;
+    /* text-decoration: none !important;
+    text-overflow: ellipsis;
+    
+    color: orange; */
+    max-width: 400px;
+}
+a:link{
+  text-decoration:none !important;
+} 
+
+.related-card-inside{
+    display: flex;
+    text-decoration: none;
+}

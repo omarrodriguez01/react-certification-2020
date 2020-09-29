@@ -1,0 +1,47 @@
+.container {
+    display: flex; /* or inline-flex */
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow: auto;
+    max-width: 100%;
+    padding: 20px 100px;
+    list-style-type: none;
+  }
+
+  .video-card {
+      flex: 1;
+      min-width: 18%;
+      display: flex;
+      padding: 2px 16px;
+  }
+
+  .item {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    padding: 2px 16px;
+    max-width: 300px;
+  }
+
+  .item:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2)
+  }
+
+.card-inside{
+        display: flex;
+        text-decoration: none;
+    }
+  .center{
+    display: block;
+    width: 50%;
+    margin: auto;
+    align-self: center;
+  }
+
+  .video-title{
+      padding: 20px;
+      text-decoration: none;
+  }
+
+  .trending{
+    padding: 40px;
+  }
