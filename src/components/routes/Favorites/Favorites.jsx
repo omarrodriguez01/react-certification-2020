@@ -8,12 +8,10 @@ import './Favorites.css';
 const Favorites = () => {
   const { FavoritesInfo, getFavorites, SetVideoId } = useContext(SearchContext);
   useEffect(() => {
-    console.log('1');
     getFavorites();
   }, []);
 
   const favorites = FavoritesInfo.items || [];
-  console.log('favs:', favorites);
   return (
     <div className="favorites">
       <h1>Favorites</h1>

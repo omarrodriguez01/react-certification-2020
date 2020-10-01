@@ -12,12 +12,10 @@ function SearchResults() {
     const getSearchResults = async () => {
       const Search = await SearchAPI(word);
       setItems(Search.items.filter((item) => item.id.kind === 'youtube#video'));
-      console.log('items',items);
     };
     getSearchResults();
   },[word]);
 
-  console.log('items',items);
   return (
     <div className="search">
       <ul className="search-container">

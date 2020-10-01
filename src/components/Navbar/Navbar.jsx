@@ -17,7 +17,7 @@ const Navbar = () => {
   );
   const { Logged, Logout } = useContext(AuthContext);
   const history = useHistory();
-  console.log('logged 1? ', Logged());
+
   if (Logged()) {
     Items = MenuItemsLogged;
   } else {
@@ -25,7 +25,7 @@ const Navbar = () => {
   }
 
   useEffect(() => {
-    console.log('logged? ', Logged());
+
     if (Logged()) {
       Items = MenuItemsLogged;
     } else {
@@ -35,16 +35,12 @@ const Navbar = () => {
 
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
-      console.log('hi fuclke');
-      console.log(event.target.value);
-      // SearchAPI(event.target.value);
       history.push(`/search/${event.target.value}`); 
     }
   };
   const search = () => {
     if (!ClickSearch) {
       SetClickSearch(true);
-      console.log(searchIcon.current.value);
       history.push(`/search/${searchIcon.current.value}`);
     }
     SetClickSearch(false);

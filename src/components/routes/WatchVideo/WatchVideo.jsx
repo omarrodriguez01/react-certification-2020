@@ -11,10 +11,8 @@ const WatchVideo = () => {
   const { ViewFavs, addFav, RemoveFav } = useContext(FavsContext);
   const [favoriteButton, SetFavoriteButton] = useState(false);
   const { id } = useParams();
-  console.log('videoID:', VideoId);
 
   const HandleFavorite = (e, fid) => {
-    console.log('fid', fid);
     if (favoriteButton === false) {
       addFav(e, fid);
       SetFavoriteButton(true);
@@ -28,7 +26,6 @@ const WatchVideo = () => {
     const getDetails = async () => {
       const VideoDetails = await getVideoDetails(id);
       SetDetails(VideoDetails.items[0].snippet);
-      console.log('VideoDetails', VideoDetails);
     };
     getDetails();
   }, [id]);
@@ -37,20 +34,15 @@ const WatchVideo = () => {
     SetFavoriteButton(false);
     const CheckinFav = () => {
       const FavoritesList = JSON.parse(localStorage.getItem('favs'));
-      console.log('FavId', id);
       SetFavoriteButton(false);
       FavoritesList.map((item, index) => {
         if (item === id) {
-          console.log('favorito? true');
           SetFavoriteButton(true);
         }
       });
-      console.log('favorito? false');
-      // SetFavoriteButton(false);
     };
     CheckinFav();
   }, [id]);
-  console.log('gotdetails', Details);
   return (
     <section>
       <div className="video">

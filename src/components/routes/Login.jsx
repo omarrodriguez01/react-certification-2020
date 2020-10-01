@@ -5,7 +5,6 @@ import { AuthContext } from '../../providers/Auth/AuthContext';
 import './Login.css';
 
 function LoginPage() {
-  console.log(AuthContext);
   const { Login, failedLogin } = useContext(AuthContext);
   const history = useHistory();
   const { register, handleSubmit, watch, errors  } = useForm();
@@ -13,16 +12,10 @@ function LoginPage() {
   let userlogged = failedLogin;
 
   const onSubmit = (data) => {
-    console.log('data',data);
     if(Login(data) === true){
       history.push('/');
     }
-    console.log('failed', failedLogin);
-    // setFailedLogin(true);
   };
-
-
-  console.log(watch('example')); // watch input value by passing the name of it
 
   return (
     <section className="login">

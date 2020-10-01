@@ -18,10 +18,8 @@ const FavsContextProvider = (props) => {
   }, []);
 
   const addFav = (event, VideoId) => {
-    console.log(VideoId);
     const array = Favorites;
     let addArray = true;
-    console.log(getArray);
     array.map((item, key) => {
       if (item === VideoId) {
         array.splice(key, 1);
@@ -32,17 +30,12 @@ const FavsContextProvider = (props) => {
       array.push(VideoId);
     }
     SetFavorites([...array]);
-    console.log('add', Favorites);
     localStorage.setItem('favs', JSON.stringify(Favorites));
   };
 
-  const ViewFavs = () => {
-    console.log('pre', Favorites);
-  };
   const RemoveFav = (e, fid) => {
     const array = Favorites; // make a separate copy of the array
     const index = array.indexOf(fid);
-    console.log(`about to delete ${fid} in ${index}`);
     if (index !== -1) {
       array.splice(index, 1);
       SetFavorites([...array]);
@@ -55,7 +48,6 @@ const FavsContextProvider = (props) => {
         Favorites,
         SetFavorites,
         addFav,
-        ViewFavs,
         favoriteButton,
         SetFavoriteButton,
         RemoveFav,

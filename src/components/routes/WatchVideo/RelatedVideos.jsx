@@ -12,7 +12,6 @@ const RelatedVideos = () => {
     const getRelated = async () => {
       const Search = await getRelatedVideos(id);
       SetRelated(Search.items);
-      console.log('items', Related);
     };
     getRelated();
   }, []);

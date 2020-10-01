@@ -24,7 +24,6 @@ const SearchContextProvider = (props) => {
   const [Details, SetDetails] = useState({});
 
   const SearchTrending = async () => {
-    console.log('hello');
     const res = await fetch(
       `https://www.googleapis.com/youtube/v3/videos?part=contentDetails,snippet&chart=mostPopular&regionCode=MX&maxResults=25&key=${REACT_APP_MY_ENV}&maxResults=10`
     );
@@ -33,26 +32,21 @@ const SearchContextProvider = (props) => {
   };
 
   const SearchAPI = async (WordToSearch) => {
-    console.log('search api');
     const res = await fetch(`https://www.googleapis.com/youtube/v3/search?q=${WordToSearch}&part=snippet&key=${REACT_APP_MY_ENV}&maxResults=10`)
     const results = await res.json();
-    console.log(results);
+
     return results;
   };
 
   const getRelatedVideos = async (RelatedId) => {
-    console.log('getting related');
     const res = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&relatedToVideoId=${RelatedId}&type=video&key=${REACT_APP_MY_ENV}`);
     const results = await res.json();
-    console.log(results);
     return results;
   };
 
   const getVideoDetails = async (DetailsId) => {
-    console.log('getting details');
     const res = await fetch(`https://www.googleapis.com/youtube/v3/videos?part=id%2C+snippet&id=${DetailsId}&key=${REACT_APP_MY_ENV}`);
     const results = await res.json();
-    console.log('details',results);
     return results;
   };
 
