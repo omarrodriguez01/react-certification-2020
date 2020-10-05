@@ -3,7 +3,7 @@ import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import { MenuItems, MenuItemsLogged } from './Navbar.options';
 import './Navbar.css';
-import { AuthContext } from '../../providers/Auth/AuthContext';
+import { AuthContext } from '../../../providers/Auth/AuthContext';
 
 let Items = MenuItems;
 

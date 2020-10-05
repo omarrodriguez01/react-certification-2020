@@ -2,12 +2,12 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
 import { BrowserRouter } from 'react-router-dom';
-import Navbar from '../../../components/Navbar/Navbar';
-import AuthContextProvider from '../../../providers/Auth/AuthContext';
-import SearchProvider from '../../../providers/SearchProvider/SearchContext';
-import FavsContextProvider from '../../../providers/FavsContext';
-import LoginPage from '../../../components/pages/Login';
-import SearchResults from '../../../components/pages/SearchResults/SearchResults';
+import Navbar from '../../../../components/base/Navbar/Navbar';
+import AuthContextProvider from '../../../../providers/Auth/AuthContext';
+import SearchProvider from '../../../../providers/SearchProvider/SearchContext';
+import FavsContextProvider from '../../../../providers/FavsContext';
+import LoginPage from '../../../../components/pages/Login';
+import SearchResults from '../../../../components/pages/SearchResults/SearchResults';
 
 const customProvider = (ui) => {
   return render(
