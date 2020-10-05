@@ -5,26 +5,26 @@ import { FavsContext } from '../../../providers/FavsContext';
 
 const FavoriteButton = () => {
   const { id } = useParams();
-  const { addFav, RemoveFav } = useContext(FavsContext);
-  const [favoriteButton, SetFavoriteButton] = useState(false);
+  const { addFavorite, RemoveFavorite } = useContext(FavsContext);
+  const [favoriteButton, setFavoriteButton] = useState(false);
 
-  const HandleFavorite = (e, fid) => {
+  const HandleFavorite = (event, favoriteId) => {
     if (favoriteButton === false) {
-      addFav(e, fid);
-      SetFavoriteButton(true);
+      addFavorite(event, favoriteId);
+      setFavoriteButton(true);
     } else {
-      RemoveFav(e, id);
-      SetFavoriteButton(false);
+      RemoveFavorite(event, favoriteId);
+      setFavoriteButton(false);
     }
   };
   useEffect(() => {
-    SetFavoriteButton(false);
+    setFavoriteButton(false);
     const CheckinFav = () => {
       const FavoritesList = JSON.parse(localStorage.getItem('favs'));
-      SetFavoriteButton(false);
-      FavoritesList.map((item, index) => {
+      setFavoriteButton(false);
+      FavoritesList.map((item) => {
         if (item === id) {
-          SetFavoriteButton(true);
+          setFavoriteButton(true);
         }
       });
     };

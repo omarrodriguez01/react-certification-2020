@@ -16,7 +16,7 @@ const FavsContextProvider = (props) => {
     }
   }, []);
 
-  const addFav = (event, VideoId) => {
+  const addFavorite = (event, VideoId) => {
     const array = Favorites;
     let addArray = true;
     array.map((item, key) => {
@@ -32,9 +32,9 @@ const FavsContextProvider = (props) => {
     localStorage.setItem('favs', JSON.stringify(Favorites));
   };
 
-  const RemoveFav = (e, fid) => {
+  const RemoveFavorite = (event, id) => {
     const array = Favorites;
-    const index = array.indexOf(fid);
+    const index = array.indexOf(id);
     if (index !== -1) {
       array.splice(index, 1);
       SetFavorites([...array]);
@@ -46,10 +46,10 @@ const FavsContextProvider = (props) => {
       value={{
         Favorites,
         SetFavorites,
-        addFav,
+        addFavorite,
         favoriteButton,
         SetFavoriteButton,
-        RemoveFav,
+        RemoveFavorite,
       }}
     >
       {props.children}
