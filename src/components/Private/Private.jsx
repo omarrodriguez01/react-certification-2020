@@ -6,11 +6,7 @@ import { AuthContext } from '../../providers/Auth/AuthContext';
 function Private({ children, ...rest }) {
   const { Logged } = useContext(AuthContext);
 
-  return (
-    <Route {...rest} render={() => (Logged() ? children : <Redirect to="/" />)} />
-  );
+  return <Route {...rest} render={() => (Logged() ? children : <Redirect to="/" />)} />;
 }
 
 export default Private;
-
-

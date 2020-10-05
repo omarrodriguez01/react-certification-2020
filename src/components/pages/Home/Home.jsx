@@ -1,35 +1,34 @@
 import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../providers/Auth/AuthContext';
-import { SearchContext } from '../../../providers/SearchContext';
 import Favorites from '../Favorites/Favorites';
-import HomeLogged from './HomeLogged';
+import { SearchContext } from '../../../providers/SearchProvider/SearchContext';
+import Actions from '../../../reducers/SearchActions';
+import { searchTrending } from '../../../api/YoutubeApi';
 import './Home.css';
 
 const Home = () => {
   const { Logged } = useContext(AuthContext);
-  const { SetVideoId, Trending, SetTrending, SearchTrending } = useContext(SearchContext);
+  const { searchState, dispatchSearch } = useContext(SearchContext);
   useEffect(() => {
-    // Update the document title using the browser API
-    SetVideoId(null);
     const getTrendingVideos = async () => {
-      const TrendingVids = await SearchTrending();
-      SetTrending(TrendingVids);
+      const results = await searchTrending();
+      dispatchSearch({ type: Actions.GET_TRENDING, trending_videos: results });
     };
-
     getTrendingVideos();
   }, []);
-
-      // {Logged() ? <HomeLogged /> : ''}
-
   return (
     <div className="trending">
       <h1>Trending</h1>
       <ul className="container">
-        {Trending.map((item) => (
+        {searchState.trending_videos.items.map((item) => (
           <div className="video-card">
-            <Link to={`/watch/${item.id}`} className="card-inside" style={{ textDecoration: 'none' }}>
-              <li key={item.id} className="item" onClick={() => SetVideoId(item.id)}>
+            <Link
+              to={`/watch/${item.id}`}
+              className="card-inside"
+              style={{ textDecoration: 'none' }}
+            >
+              <li key={item.id} className="item">
                 <img className="center" src={item.snippet.thumbnails.default.url} />
                 <p className="video-title">{item.snippet.title}</p>
               </li>
@@ -37,7 +36,7 @@ const Home = () => {
           </div>
         ))}
       </ul>
-      {Logged() ? <Favorites /> : ''}
+      {Logged() && <Favorites />}
     </div>
   );
 };

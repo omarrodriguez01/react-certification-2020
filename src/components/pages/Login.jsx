@@ -7,12 +7,10 @@ import './Login.css';
 function LoginPage() {
   const { Login, failedLogin } = useContext(AuthContext);
   const history = useHistory();
-  const { register, handleSubmit, watch, errors  } = useForm();
-
-  let userlogged = failedLogin;
+  const { register, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
-    if(Login(data) === true){
+    if (Login(data) === true) {
       history.push('/');
     }
   };
@@ -30,16 +28,13 @@ function LoginPage() {
         <div className="form-group">
           <label htmlFor="password">
             <strong>password </strong>
-            <input name="password" ref={register({ required: true })} />
-            {errors.exampleRequired && <span>This field is required</span>}
+            <input name="password" ref={register} />
           </label>
         </div>
         {failedLogin ? <p>Psssssst.... username: wizeline pass: Rocks!</p> : ''}
         <button type="submit">login</button>
       </form>
-     
     </section>
   );
 }
 export default LoginPage;
-

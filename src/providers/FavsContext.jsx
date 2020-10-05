@@ -1,5 +1,4 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 
 export const FavsContext = createContext(null);
 
@@ -34,7 +33,7 @@ const FavsContextProvider = (props) => {
   };
 
   const RemoveFav = (e, fid) => {
-    const array = Favorites; // make a separate copy of the array
+    const array = Favorites;
     const index = array.indexOf(fid);
     if (index !== -1) {
       array.splice(index, 1);

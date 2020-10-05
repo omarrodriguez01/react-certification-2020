@@ -1,25 +1,21 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-
 import Navbar from './Navbar/Navbar';
-// eslint-disable-next-line import/no-named-as-default
-import SearchContext from '../providers/SearchContext';
+import SearchProvider from '../providers/SearchProvider/SearchContext';
 import './App.css';
-
-import Home from './routes/Home/Home';
-import WatchVideo from './routes/WatchVideo/WatchVideo';
-import Login from './routes/Login';
-import Favorites from './routes/Favorites/Favorites';
+import Home from './pages/Home/Home';
+import WatchVideo from './pages/WatchVideo/WatchVideo';
+import Login from './pages/Login';
+import Favorites from './pages/Favorites/Favorites';
 import AuthContext from '../providers/Auth/AuthContext';
 import FavsContext from '../providers/FavsContext';
-import SearchResults from './routes/SearchResults/SearchResults';
+import SearchResults from './pages/SearchResults/SearchResults';
 import Private from './Private/Private';
 
 const App = () => {
   return (
-    // eslint-disable-next-line react/jsx-filename-extension
     <div className="App">
-      <SearchContext>
+      <SearchProvider>
         <AuthContext>
           <FavsContext>
             <BrowserRouter>
@@ -36,7 +32,7 @@ const App = () => {
             </BrowserRouter>
           </FavsContext>
         </AuthContext>
-      </SearchContext>
+      </SearchProvider>
     </div>
   );
 };

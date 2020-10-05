@@ -1,49 +1,42 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
-import { MenuItems } from './MenuItems';
-import { MenuItemsLogged } from './MenuItemsLogged';
+import { MenuItems, MenuItemsLogged } from './Navbar.options';
 import './Navbar.css';
-import { Button } from '../Button';
-import { SearchContext } from '../../providers/SearchContext';
 import { AuthContext } from '../../providers/Auth/AuthContext';
 
 let Items = MenuItems;
 
 const Navbar = () => {
   const searchIcon = React.createRef();
-  const { MenuClick, SetMenuClick, SearchAPI, ClickSearch, SetClickSearch } = useContext(
-    SearchContext
-  );
-  const { Logged, Logout } = useContext(AuthContext);
+  const [clickSearch, setClickSearch] = useState(false);
+  const { userAuthenticated, Logout } = useContext(AuthContext);
   const history = useHistory();
 
-  if (Logged()) {
+  if (userAuthenticated) {
     Items = MenuItemsLogged;
   } else {
     Items = MenuItems;
   }
-
   useEffect(() => {
-
-    if (Logged()) {
+    if (userAuthenticated) {
       Items = MenuItemsLogged;
     } else {
       Items = MenuItems;
     }
-  });
+  }, [userAuthenticated]);
 
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
-      history.push(`/search/${event.target.value}`); 
+      history.push(`/search/${event.target.value}`);
     }
   };
   const search = () => {
-    if (!ClickSearch) {
-      SetClickSearch(true);
+    if (!clickSearch) {
+      setClickSearch(true);
       history.push(`/search/${searchIcon.current.value}`);
     }
-    SetClickSearch(false);
+    setClickSearch(false);
   };
   return (
     <nav className="NavbarItems">
@@ -53,19 +46,13 @@ const Navbar = () => {
         </h1>
       </Link>
       <div className="top-left">
-        <div
-          className="menu-icon"
-          onClick={() => (MenuClick ? SetMenuClick(false) : SetMenuClick(true))}
-        >
-          <i className={MenuClick ? 'fas fa-times' : 'fas fa-bars'} />
-        </div>
-        <div className="center-block"> 
-        <input ref={searchIcon} type="text" onKeyDown={handleKeyDown} />
+        <div className="center-block">
+          <input ref={searchIcon} type="text" onKeyDown={handleKeyDown} />
           <i className="fas fa-search" onClick={search} />
         </div>
       </div>
 
-      <ul className={MenuClick ? 'nav-menu active' : 'nav-menu'}>
+      <ul className="nav-menu">
         {Items.map((item, index) => {
           return (
             <li key={index}>
@@ -75,9 +62,11 @@ const Navbar = () => {
             </li>
           );
         })}
-        {Logged() ? (
+        {userAuthenticated ? (
           <li key="5">
-            <a className="nav-links" onClick={Logout} href="/">logout</a>
+            <a className="nav-links" onClick={Logout} href="/">
+              logout
+            </a>
           </li>
         ) : (
           ''

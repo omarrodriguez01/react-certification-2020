@@ -9,6 +9,11 @@
     left: -100vw;
 }
 
+.player {
+    width: 800px;
+    height: 450px;
+}
+
 .toggle-heart{
     color: #aab8c2;
 }
